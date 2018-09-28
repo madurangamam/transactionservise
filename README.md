@@ -2,18 +2,18 @@
 
 Technnology used
 ---------------------
-Java 1.8
-Spring Boot 2.0.2
-Maven 3.5.4
-JPA
-MySql 
+Java 1.8  
+Spring Boot 2.0.2  
+Maven 3.5.4  
+JPA  
+MySql   
 
 
 Pre Requisites
 --------------
-My Sql
-Maven
-Java
+My Sql  
+Maven  
+Java  
 
 Setup Project
 -----------------
@@ -21,9 +21,9 @@ Step 1
 
 Create mysql database. Please find connection details as below. For further reference, you can find more details here.(/transactionservise/src/main/resources/application.properties)
 
-spring.datasource.url=jdbc:mysql://localhost:3306/hoolah
-spring.datasource.username=root
-spring.datasource.password=root
+    spring.datasource.url=jdbc:mysql://localhost:3306/hoolah
+    spring.datasource.username=root
+    spring.datasource.password=root
 
 Step 2
 
