@@ -1,6 +1,7 @@
 package com.hoolah.commons;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.text.ParseException;
@@ -15,17 +16,33 @@ import org.springframework.stereotype.Component;
 import com.hoolah.dto.TransactionRecordDto;
 import com.hoolah.entity.TransactionRecord;
 import com.hoolah.exception.TransactionException;
+import com.hoolah.services.TransactionServiceImpl;
 
 @Component
 public class CommonComponent {
 
 	@Autowired
 	TransactionRecordDto recordDto;
+	
+	@Autowired
+	TransactionServiceImpl transactionServise;
+	
+	@Autowired
+	TransactionRecord tranrecord;
 
 	@PostConstruct
-	public void init() throws ParseException, TransactionException {
-
-		recordDto.setGetTransActionRecords(readFile());
+	public void init(){
+		System.out.println("Init call-----------------------------------------");
+		try {
+			recordDto.setGetTransActionRecords(readFile());
+			transactionServise.addTransActionData(tranrecord);
+		} catch (TransactionException e) {
+			System.out.println(e.getErrorCode());
+			e.printStackTrace();
+		}catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 	/**
@@ -34,12 +51,15 @@ public class CommonComponent {
 	 * @throws ParseException,TransactionException
 	 */
 	public List<TransactionRecord> readFile() throws TransactionException, ParseException {
-		String csvFile = "/C:/Users/madhawa/Desktop/assignment/test.csv";
+
 		String line = "";
 		String cvsSplitBy = ",";
 		List<TransactionRecord> recordList = new ArrayList<>();
+		
+		ClassLoader classLoader = getClass().getClassLoader();
+		File file = new File(classLoader.getResource("transactionRecords.csv").getFile());
 
-		try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
+		try (BufferedReader br = new BufferedReader(new FileReader(file))) {
 
 			java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 

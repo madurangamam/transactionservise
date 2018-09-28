@@ -30,7 +30,6 @@ public class TransactionServiceImpl implements ItransactionService {
 		String message = null;
 		try {
 			for (TransactionRecord record : recordList) {
-				System.out.println("trans ID------>>>>" + record.getTranactionId());
 				transactionDao.addTransRecord(record);
 
 			}

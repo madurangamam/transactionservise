@@ -15,14 +15,8 @@ public class TransactionController {
 	CommonComponent common;
 	@Autowired
 	TransactionServiceImpl transactionServise;
-	@Autowired
-	TransactionRecord tranrecord;
 
-	@RequestMapping("/insertdata")
-	public String insertdata() throws TransactionException {
-		return transactionServise.addTransActionData(tranrecord);
-	}
-
+	
 	@RequestMapping("/getrecords/{merchant}")
 	public String getAverageTransaction(@PathVariable("merchant") String merchant) {
 
