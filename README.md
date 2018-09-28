@@ -15,6 +15,15 @@ My Sql
 Maven  
 Java  
 
+Notes
+------
+***When the system initialized, data will be inserted in to database *****
+
+If you have to run separate data set, you have to clear the existing data set and run the application again.
+
+If you need to change the date values, you can do it in following class.
+com.hoolah.dao.TransactionDaoImpl
+
 Setup Project
 -----------------
 Step 1
@@ -40,7 +49,7 @@ CREATE TABLE `hoolah`.`tranaction` (
   
 Step 3 
 
-You can find csv file in following location.
+You can find csv file in following location.  
 /transactionservise/src/main/resources/transactionRecords.csv
 
 Step 4
@@ -48,14 +57,14 @@ Step 4
 Run following class in the project.(FYI You can import project to Eclipse IDE and run)
 com.hoolah.springboot.Application
 
-Step 4
+How to run the application
+----------------------------
+After running Application class, run the following url in browser.  
+http://localhost:8080/getrecords{Merchant Name}
 
-***When the system initialized, data will be inserted in to database *****
+Example:-
+http://localhost:8080/getrecords/Kwik-E-Mart
 
-If you have to run separate data set, you have to clear the existing data set and run the application again.
-
-If you need to change the date values, you can do it in following class.
-com.hoolah.dao.TransactionDaoImpl
 
 
 
