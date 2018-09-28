@@ -41,7 +41,7 @@ public class TransactionDaoImpl implements ItransactionDao {
 			e.printStackTrace();
 		}
 
-		String sql = "Select * FROM tranaction as ct WHERE (ct.merchant=:merchant AND ct.tranaction_date BETWEEN :stDate AND :edDate) OR (ct.trans_type=:type)";
+		String sql = "Select * FROM tranaction as ct WHERE ct.merchant=:merchant AND (ct.tranaction_date BETWEEN :stDate AND :edDate) OR (ct.trans_type=:type)";
 
 		Query query = entityManager.createNativeQuery(sql);
 		query.setParameter("merchant", merchant);
