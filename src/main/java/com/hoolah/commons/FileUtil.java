@@ -19,7 +19,7 @@ import com.hoolah.exception.TransactionException;
 import com.hoolah.services.TransactionServiceImpl;
 
 @Component
-public class CommonComponent {
+public class FileUtil {
 
 	@Autowired
 	TransactionRecordDto recordDto;
@@ -32,7 +32,7 @@ public class CommonComponent {
 
 	@PostConstruct
 	public void init(){
-		System.out.println("Init call-----------------------------------------");
+
 		try {
 			recordDto.setGetTransActionRecords(readFile());
 			transactionServise.addTransActionData(tranrecord);
